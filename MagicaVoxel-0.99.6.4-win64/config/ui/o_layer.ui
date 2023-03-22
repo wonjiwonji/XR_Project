@@ -1,0 +1,47 @@
+vbox(id = 'menu_layer' clip = '0' margin = '8 8 0 0') ::
+{
+	//----------------
+	// Type
+	//----------------
+	opBox(id = 'b_obj' onClick = 'set b_obj' value = 'msel') ::
+	{																									
+		vbox(def = 'op-brush' prev = '2') ::
+		{
+			hbox(size = '24.5' next = '1') ::
+			{
+				option(def = 'op-mode' id = 'move' text = '^22' textSize = '15 15')(flex = '1' next = '1')(hint = 'Free Move [CTRL] : Duplicate [CTRL+SHIFT]')
+				option(def = 'op-mode' id = 'patt' text = '^16' textSize = '14 14')(flex = '1' next = '0')(hint = 'Pattern [CTRL+ALT] : Rotate [-/+/0/9/Home]')
+			}
+			hbox(size = '24.5') ::
+			{
+				option(def = 'op-mode' id = 'wrap' text = '^81' textSize = '14 14')(flex = '1' next = '1')(hint = 'Wrap [N] : Commit [Enter] : Cancel [Esc] : Two-sided [SHIFT]')(class = 'cmd' onClick = [[ui_view 'v_obj_wrap']])
+				option(def = 'op-mode' id = 'msel' text = '^12' textSize = '14 14')(flex = '1' next = '0')(hint = 'Marquee Select [M] : Add [SHIFT] : Remove [SHIFT+ALT]')
+			}
+		}
+	}
+
+	vbox(id = 'v_obj_wrap' hidden = '1' prev = '3') ::
+	{
+		hbox(size = '28')(hint = 'Wrap Spacing') ::
+		{
+			textField(def = 'tf-sub' id = 'b_obj_wrap_space_x' textColor = '255 255 255 180' onEnter = 'set b_obj_wrap_space x' maxLength = '3' enter = '1')(flex = '1' next = '3')
+			resizer(class = 'int')(range = '0 256' step = '1' space = '5')(size = '8' next = '1')(corner = '10')(margin = '0 0 2 2')
+			textField(def = 'tf-sub' id = 'b_obj_wrap_space_y' textColor = '255 255 255 180' onEnter = 'set b_obj_wrap_space y' maxLength = '3' enter = '1')(flex = '1' nect = '3')
+			resizer(class = 'int')(range = '0 256' step = '1' space = '5')(size = '8' next = '1')(corner = '10')(margin = '0 0 2 2')
+			textField(def = 'tf-sub' id = 'b_obj_wrap_space_z' textColor = '255 255 255 180' onEnter = 'set b_obj_wrap_space z' maxLength = '3' enter = '1')(flex = '1' next = '3')
+			resizer(class = 'int')(range = '0 256' step = '1' space = '5')(size = '8' next = '1')(corner = '10')(margin = '0 0 2 2')
+		}
+	}
+	
+	//----------------
+	// Layer
+	//----------------
+	hbox(clip = '0' size = '28' margin = '2 2 0 0') ::
+	{
+		switch(class = 'panel')(def= 'h1' selected = '1' path = '1 1' text = 'Layer')(flex = '1')
+
+		
+	}
+
+	sceneLayer(clip = '0' margin = '-3 -3 0 0')(id = 'sceneLayer' menu = 'menu_lay' size = '576')(hint = 'Set Selected/Current Layer : Menu [RButton]')
+}
