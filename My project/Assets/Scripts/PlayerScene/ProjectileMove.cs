@@ -25,4 +25,13 @@ public class ProjectileMove : MonoBehaviour
             collision.gameObject.GetComponent<Monster>().Damaged(1);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Monster"))
+        {
+            Destroy(this.gameObject);
+            other.gameObject.GetComponent<Monster>().Damaged(1);
+        }
+    }
 }
