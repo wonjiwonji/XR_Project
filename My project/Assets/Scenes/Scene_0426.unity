@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 302697328}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -444,6 +444,8 @@ MonoBehaviour:
   hudText: {fileID: 1221562590}
   character: {fileID: 249734744}
   offset: {x: 0, y: 15, z: 0}
+  HudTextUp: {fileID: 3189368012825955956, guid: 90b6e2f140c5a1d4a9713141d686b94d, type: 3}
+  canvasObject: {fileID: 418198381}
 --- !u!4 &302697329
 Transform:
   m_ObjectHideFlags: 0
@@ -614,7 +616,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -952,7 +954,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.2, y: 25}
+  m_AnchoredPosition: {x: 2.9, y: 25}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1221562590
