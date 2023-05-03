@@ -11,11 +11,14 @@ public class ProjectileMove : MonoBehaviour
         MONSTER
     }
     public Vector3 launchDirection; // 발사 방향
+
     public PROJECTILETYPE projectileType;
+
+    public FxManager FxManager => FxManager.Instance;
 
     private void FixedUpdate()
     {
-        float moveAmount = 3 * Time.fixedDeltaTime; // 이동 속도 설정
+        float moveAmount = 10 * Time.fixedDeltaTime; // 이동 속도 설정
         transform.Translate(launchDirection * moveAmount); // Translate 로 이동
     }
 
@@ -43,6 +46,8 @@ public class ProjectileMove : MonoBehaviour
             // 함수 호출을 위해 찾아야함 (연결 되어있지 않음) -> FindGameObjectWithTag ; 태그로 찾아서 연결
             GameObject Temp = GameObject.FindGameObjectWithTag("GameManager");
             Temp.GetComponent<HUDTextManager>().UpdateHUDTextSet("1", other.gameObject, new Vector3(0.0f, 10.0f, 0.0f));
+
+            FxManager.PlayFx(this.gameObject.transform, FxType.hit, Vector3.zero);
         }
 
         if(other.CompareTag("Player") && projectileType == PROJECTILETYPE.MONSTER)  // Tag를 검사한다.
