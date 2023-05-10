@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
+    [SerializeField] protected SoundProfileData soundProfileData;
+
     public Vector3 launchDirection;
     public GameObject Projectile;
 
+    protected AudioManager AudioManager => AudioManager.Instance;
+
     public void FireProjectile()
     {
+        AudioManager.PlayOneShot(soundProfileData.GetRandomClip());
         GameObject temp = (GameObject)Instantiate(Projectile);
 
         temp.transform.position = this.gameObject.transform.position;
