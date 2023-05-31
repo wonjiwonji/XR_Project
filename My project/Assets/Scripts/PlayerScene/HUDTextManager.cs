@@ -5,6 +5,7 @@ using UnityEngine.UI;   // UI 사용
 
 public class HUDTextManager : MonoBehaviour
 {
+    protected GameManager GameManager => GameManager.Instance;
 
     public Text hudText;
     public GameObject character;    // 캐릭터 게임 오브젝트를 참조
@@ -28,6 +29,8 @@ public class HUDTextManager : MonoBehaviour
 
     public void UpdateHUDTextSet(string newText, GameObject target, Vector3 TargetOffset)
     {
+        if(GameManager.currentState != GameManager.GameState.GameOver)
+        {
         Vector3 TargetPosition = target.transform.position;
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(TargetPosition);    // 3D Position -> 2D
         GameObject temp = (GameObject)Instantiate(HudTextUp);
@@ -36,6 +39,7 @@ public class HUDTextManager : MonoBehaviour
 
         // HUDMove Class
         temp.GetComponent<HUDMove>().textUI.text = newText;
+        }
     }
 
 }
