@@ -1,71 +1,71 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using DG.Tweening;  // Tween ¾µ°ÅÀÓ
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
+// using DG.Tweening;  // Tween ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-public class TweenTest : MonoBehaviour
-{
+// public class TweenTest : MonoBehaviour
+// {
 
-    public bool isPunch = false;
-    Sequence sequence;
-    private Renderer renderer;  // »öÀ» °¡Á®¿À±â À§ÇØ¼­
+//     public bool isPunch = false;
+//     Sequence sequence;
+//     private Renderer renderer;  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //transform.DOMoveX(5, 2);    // X ÃàÀ¸·Î 5¸¸Å­ 2ÃÊµ¿¾È ÀÌµ¿
-        //transform.DORotate(new Vector3(0, 0, 180), 2);  // ZÃà Áß½ÉÀ¸·Î 180µµ È¸Àü 2ÃÊµ¿¾È
-        //transform.DOScale(new Vector3(2, 2, 2), 2); // X 2¹è È®´ë 2ÃÊµ¿¾È
+//     // Start is called before the first frame update
+//     void Start()
+//     {
+//         //transform.DOMoveX(5, 2);    // X ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 5ï¿½ï¿½Å­ 2ï¿½Êµï¿½ï¿½ï¿½ ï¿½Ìµï¿½
+//         //transform.DORotate(new Vector3(0, 0, 180), 2);  // Zï¿½ï¿½ ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½ 180ï¿½ï¿½ È¸ï¿½ï¿½ 2ï¿½Êµï¿½ï¿½ï¿½
+//         //transform.DOScale(new Vector3(2, 2, 2), 2); // X 2ï¿½ï¿½ È®ï¿½ï¿½ 2ï¿½Êµï¿½ï¿½ï¿½
 
-        // Sequence ¿¡ ³ÖÀ¸¸é ¾Æ·¡ Ãß°¡ÇÑ ¼ø¼­´ë·Î µ¿ÀÛÇÔ.
-        sequence = DOTween.Sequence();
+//         // Sequence ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ·ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+//         sequence = DOTween.Sequence();
 
-        sequence.Append(transform.DOMoveX(5, 2));
-        sequence.Append(transform.DORotate(new Vector3(0, 0, 180), 2));
-        sequence.Append(transform.DOScale(new Vector3(2, 2, 2), 2));
-        sequence.SetLoops(-1, LoopType.Yoyo);
-
-
-        //transform.DOMoveX(5, 2).SetEase(Ease.OutBounce).OnComplete(DeactivateObject);
-        //transform.DOShakeRotation(2, new Vector3(0, 0, 180), 10, 90); // °­µµ, ·£´ý¼º, FadeOut Á¤µµ µîÀ» ³ÖÀ» ¼ö ÀÖÀ½
+//         sequence.Append(transform.DOMoveX(5, 2));
+//         sequence.Append(transform.DORotate(new Vector3(0, 0, 180), 2));
+//         sequence.Append(transform.DOScale(new Vector3(2, 2, 2), 2));
+//         sequence.SetLoops(-1, LoopType.Yoyo);
 
 
-        renderer = GetComponent<Renderer>();
-    }
+//         //transform.DOMoveX(5, 2).SetEase(Ease.OutBounce).OnComplete(DeactivateObject);
+//         //transform.DOShakeRotation(2, new Vector3(0, 0, 180), 10, 90); // ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, FadeOut ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Backspace))
-        {
-            sequence.Kill();    // ¸ØÃßµµ·Ï
-        }
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            if(!isPunch)
-            {
-                isPunch = true;
-                transform.DOPunchScale(new Vector3(0.5f, 0.5f, 0.5f), 0.1f, 10, 1).OnComplete(EndPunch);
 
-                Color color = new Color(Random.value, Random.value, Random.value);  // rgb°ªÀ» ·£´ýÀ¸·Î (0~10?)
+//         renderer = GetComponent<Renderer>();
+//     }
 
-                renderer.material.DOColor(color, 0.1f)
-                    .SetEase(Ease.InOutQuad)
-                    .SetAutoKill(false);
+//     // Update is called once per frame
+//     void Update()
+//     {
+//         if(Input.GetKeyDown(KeyCode.Backspace))
+//         {
+//             sequence.Kill();    // ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½
+//         }
+//         if(Input.GetKeyDown(KeyCode.Space))
+//         {
+//             if(!isPunch)
+//             {
+//                 isPunch = true;
+//                 transform.DOPunchScale(new Vector3(0.5f, 0.5f, 0.5f), 0.1f, 10, 1).OnComplete(EndPunch);
 
-                renderer.material.DOPlay();
-            }
-        }
-    }
+//                 Color color = new Color(Random.value, Random.value, Random.value);  // rgbï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (0~10?)
 
-    void EndPunch()
-    {
-        isPunch = false;
-    }
+//                 renderer.material.DOColor(color, 0.1f)
+//                     .SetEase(Ease.InOutQuad)
+//                     .SetAutoKill(false);
 
-    void DeactivateObject() // Á¾·á µÇ¸é
-    {
-        gameObject.SetActive(false); // object ²¨Áö°Ô
-    }
+//                 renderer.material.DOPlay();
+//             }
+//         }
+//     }
 
-}
+//     void EndPunch()
+//     {
+//         isPunch = false;
+//     }
+
+//     void DeactivateObject() // ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½
+//     {
+//         gameObject.SetActive(false); // object ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//     }
+
+// }

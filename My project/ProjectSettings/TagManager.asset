@@ -9,6 +9,9 @@ TagManager:
   - GameManager
   - FxTemporaire
   - NestedScrollManager
+  - Item
+  - Floor
+  - Point
   layers:
   - Default
   - TransparentFX
